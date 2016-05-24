@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter {
+            url "http://jcenter.bintray.com/"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'camel-jms'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.apache.camel:camel-core:2.17.1")
+    compile("org.apache.camel:camel-spring:2.17.1")
+    compile("org.apache.camel:camel-servlet:2.17.1")
+    compile("org.apache.camel:camel-spring-boot:2.17.1")
+    compile("org.apache.camel:camel-jms:2.17.1")
+    compile("org.apache.camel:camel-jackson:2.17.1")
+    compile("org.apache.camel:camel-jaxb:2.17.1")
+    compile("org.apache.activemq:activemq-broker:5.12.0")
+    compile 'org.apache.activemq:activemq-camel:5.12.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
+}
